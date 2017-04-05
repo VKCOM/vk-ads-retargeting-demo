@@ -35,11 +35,11 @@
             <section class="section">
                 <h3 class="section__header"><span class="section__header-index">3. </span>Используйте методы JS API</h3>
                 <p>Вызывайте методы в момент совершения пользователем интересного вам действия. Самый простой пример &mdash; добавить код в атрибут <code class="code code_inline">onclick</code> кнопки:</p>
-                <pre><code class="code code_block">&lt;button onclick="VK.Retargeting.Event('click-save-button')">
+                <pre class="code code_block"><code>&lt;button onclick="VK.Retargeting.Event('click-save-button')">
     Сохранить
 &lt;/button></code></pre>
 
-                <p>Подробнее о методах:</p>
+                <p>Доступно три метода: посещение страницы (совпадает с тем, как работал пиксель до появления событий и JS API), генерация события и добавление в аудиторию. Подробнее о них:</p>
                 <p class="text_subheader">
                     <code class="code code_inline">VK.Retargeting.Hit()</code>
                 </p>
@@ -59,7 +59,7 @@
                 <p class="text_indent">
                     <strong>Например:</strong> для аудитории &laquo;Начавшие заполнять анкету&raquo; задано правило: &laquo;Событие совпадает с <code class="code code_inline">form-fill-started</code>&raquo;. Тогда, сгенерировав такое событие в момент начала заполнения анкеты, пользователь будет сохранён в этой аудитории.
                 </p>
-                <pre class="text_indent"><code class="code code_block">var formFillStarted = false;
+                <pre class="text_indent code code_block"><code>var formFillStarted = false;
 $('form').on('change', function () {
     if (!formFillStarted) {
         formFillStarted = true;
@@ -77,7 +77,7 @@ $('form').on('change', function () {
                 <p class="text_indent">
                     <strong>Например:</strong> требуется собрать всех пользователей, добавивших товар в корзину, в соответствующую аудиторию.
                 </p>
-                <pre class="text_indent"><code class="code code_block">$('.add-to-basket').on('click', function () {
+                <pre class="text_indent code code_block"><code>$('.add-to-basket').on('click', function () {
     VK.Retargeting.Add(8839163);
 });</code></pre>
             </section>
