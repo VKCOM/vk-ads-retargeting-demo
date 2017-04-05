@@ -305,7 +305,7 @@ textarea {
     font-family: monospace;
     color: maroon;
     background-color: #f4f4f4;
-    font-size: 1.1em;
+    font-size: 14.5px;
 }
 
 .code_inline {
@@ -313,7 +313,9 @@ textarea {
 }
 
 .code_block {
-    padding: 4px 6px;
+    padding: 3px 12px;
+    display: block;
+    /* font-size: inherit; */
 }
 
 p {
@@ -321,7 +323,7 @@ p {
 }
 
 .text_indent {
-    padding-left: 30px;
+    margin-left: 30px;
 }
 
 .text_subheader {
@@ -350,6 +352,7 @@ p {
     width: 300px;
     border: 1px solid #aaa;
 }
+
 .input[disabled],
 .button[disabled]
 {
@@ -377,4 +380,26 @@ p {
 
 h1 {
     margin-top: 10px;
+}
+
+.log {
+    display: block;
+    overflow: auto;
+    font-size: 15px;
+}
+
+
+.log__item {
+    margin-bottom: 10px;
+    border-left: 2px solid #5b749f;
+    /* padding-left: 10px; */
+    background-color: #fafafa;
+    padding: 3px 0 3px 10px;
+}
+.log__item:last-child {
+    margin-bottom: 0;
+}
+
+.log__item-time {
+    font-size: 0.8em;
 }
