@@ -1,0 +1,46 @@
+<!doctype html>
+<html class="no-js" lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Ретаргетинг ВКонтакте</title>
+        <meta name="description" content="Демонстрация использования JS API Ретаргетинга ВКонтакте">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+    <body>
+        <div class="content">
+            <h1>Ретаргетинг ВКонтакте</h1>
+            <p>Эта страница на примерах поможет разобраться, как пользоваться JS API Ретаргетинга ВКонтакте.</p>
+
+            <p class="menu">
+                <span class="menu__item"><a href="index.html">Описание JS API</a></span>
+                <span class="menu__item menu__item_selected">Простой пример</span>
+            </p>
+
+            <hr>
+            <div class="form">
+                <label class="label">
+                    Имя:<br>
+                    <input class="input" type="text">
+                </label>
+                <label class="label">
+                    Фамилия:<br>
+                    <input class="input" type="text">
+                </label>
+                <button class="button">Сохранить</button>
+            </div>
+
+            <hr>
+            <p>В этом примере используются все методы JavaScript API: простое событие посещения страницы, событие нажатия на кнопку, и добавление в аудиторию по её ID. Исходный код с комментариями доступен на github в файлах <code class="code code_inline">demo.html</code> и <code class="code code_inline">demo.js</code>.</p>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+        <script src="https://vk.com/js/api/openapi.js?144"></script>
+        <script src="js/demo.js"></script>
+    </body>
+</html>

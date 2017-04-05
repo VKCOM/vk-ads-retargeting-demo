@@ -1,0 +1,91 @@
+<!doctype html>
+<html class="no-js" lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Ретаргетинг ВКонтакте</title>
+        <meta name="description" content="Демонстрация использования JS API Ретаргетинга ВКонтакте">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+    <body>
+        <div class="content">
+            <h1>Ретаргетинг ВКонтакте</h1>
+            <p>Эта страница на примерах поможет разобраться, как пользоваться JS API Ретаргетинга ВКонтакте.</p>
+
+            <p class="menu">
+                <span class="menu__item menu__item_selected">Описание JS API</span>
+                <span class="menu__item"><a href="demo.html">Простой пример</a></span>
+            </p>
+
+            <section class="section">
+                <h3 class="section__header"><span class="section__header-index">1. </span>Подключите <code class="code code_inline">openapi.js</code></h3>
+                <pre><code class="code code_block">&lt;script src="//vk.com/js/api/openapi.js?144">&lt;/script></code></pre>
+            </section>
+
+            <section class="section">
+                <h3 class="section__header"><span class="section__header-index">2. </span>Инициализируйте код пикселя</h3>
+                <pre><code class="code code_block">VK.Retargeting.Init('VK-RTRG-96471-KZ24cpR');</code></pre>
+            </section>
+
+            <section class="section">
+                <h3 class="section__header"><span class="section__header-index">3. </span>Используйте методы JS API</h3>
+                <p>Вызывайте методы в момент совершения пользователем интересного вам действия. Самый простой пример &mdash; добавить код в атрибут <code class="code code_inline">onclick</code> кнопки:</p>
+                <pre><code class="code code_block">&lt;button onclick="VK.Retargeting.Event('click-save-button')">
+    Сохранить
+&lt;/button></code></pre>
+
+                <p>Подробнее о методах:</p>
+                <p class="text_subheader">
+                    <code class="code code_inline">VK.Retargeting.Hit()</code>
+                </p>
+                <p class="text_indent">
+                    Генерация простого события посещения страницы. В зависимости от адреса страницы, на которой пользователь вашего сайта сейчас находится, он будет добавлен в аудитории, для которых сработают настроенные для них правила.
+                </p>
+                <p class="text_indent">
+                    <strong>Например:</strong> для аудитории &laquo;Посетители раздела "Мужская обувь"&raquo; задано правило: &laquo;URL содержит <code class="code code_inline">/catalog/men-shoes/</code>&raquo;. Тогда, вызвав этот метод со страницы с адресом <code class="code code_inline">https://example.com/catalog/men-shoes/summer/</code>, пользователь будет сохранён в этой аудитории.
+                </p>
+
+                <p class="text_subheader">
+                    <code class="code code_inline">VK.Retargeting.Event(eventName)</code>
+                </p>
+                <p class="text_indent">
+                    Генерация события. Пользователь будет добавлен в аудитории, для которых сработают настроенные для них правила.
+                </p>
+                <p class="text_indent">
+                    <strong>Например:</strong> для аудитории &laquo;Начавшие заполнять анкету&raquo; задано правило: &laquo;Событие совпадает с <code class="code code_inline">form-fill-started</code>&raquo;. Тогда, сгенерировав такое событие в момент начала заполнения анкеты, пользователь будет сохранён в этой аудитории.
+                </p>
+                <pre class="text_indent"><code class="code code_block">var formFillStarted = false;
+$('form').on('change', function () {
+    if (!formFillStarted) {
+        formFillStarted = true;
+        VK.Retargeting.Event('form-fill-started');
+    }
+});</code></pre>
+
+
+                <p class="text_subheader">
+                    <code class="code code_inline">VK.Retargeting.Add(audienceID)</code>
+                </p>
+                <p class="text_indent">
+                    Безусловное добавление пользователя в указанную аудиторию. Аудитория должна принадлежать тому же рекламному кабинету ВКонтакте, что и используемый пиксель.
+                </p>
+                <p class="text_indent">
+                    <strong>Например:</strong> требуется собрать всех пользователей, добавивших товар в корзину, в соответствующую аудиторию.
+                </p>
+                <pre class="text_indent"><code class="code code_block">$('.add-to-basket').on('click', function () {
+    VK.Retargeting.Add(8839163);
+});</code></pre>
+            </section>
+
+        </div>
+
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
