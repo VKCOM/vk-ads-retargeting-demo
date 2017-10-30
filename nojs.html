@@ -1,0 +1,57 @@
+<!doctype html>
+<html class="no-js" lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Ретаргетинг ВКонтакте</title>
+    <meta name="description" content="Демонстрация использования JS API Ретаргетинга ВКонтакте">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body>
+<div class="content">
+    <a href="https://vk.com/ads?act=retargeting" target="_blank" class="logo"></a>
+    <h1>Ретаргетинг ВКонтакте</h1>
+    <p>Эта страница на примерах поможет разобраться, как пользоваться JS API Ретаргетинга ВКонтакте.</p>
+
+    <p class="menu">
+        <span class="menu__item"><a href="index.html">Описание JS API</a></span>
+        <span class="menu__item menu__item_selected">Использование без JS</span>
+        <span class="menu__item"><a href="demo.html">Простой пример</a></span>
+    </p>
+
+    <section class="section">
+        <h3 class="section__header"><span class="section__header-index"></span>Выполните http-запрос к <code class="code code_inline">https://vk.com/rtrg</code></h3>
+        <p>Параметры:</p>
+        <ul>
+            <li><code class="code code_inline">p</code>: код пикселя. Обязательный параметр. Например, <code class="code code_inline">VK-RTRG-96471-KZ24cpR</code>.</li>
+            <li><code class="code code_inline">event</code>: событие. Например, <code class="code code_inline">click-save-button</code>.</li>
+            <li><code class="code code_inline">audience</code>: ID аудитории, куда добавить пользователя. Например, <code class="code code_inline">8839163</code>.</li>
+            <li><code class="code code_inline">device_id</code>: device ID пользователя. Например, <code class="code code_inline">ADF5EE9D-9DA4-4378-83D7-3192B18B9922</code>.</li>
+        </ul>
+        <p>Запрос завершится http-кодом <code class="code code_inline">200</code> и вернёт 65-байтную прозрачную GIF-картинку размером 1x1 пиксель.</p>
+    </section>
+    <section class="section">
+        <h3 class="section__header"><span class="section__header-index"></span>Примеры</h3>
+        <p class="text_subheader">Вызов пикселя с событием и добавлением в аудитории в соответствии с правилами пикселя:</p>
+        <pre class="text_indent code code_block"><code>https://vk.com/rtrg?p=VK-RTRG-96471-nQaGP&event=click-save-button</code></pre>
+        <p class="text_subheader">Вызов пикселя с добавлением пользователя в конкретную аудиторию:</p>
+        <pre class="text_indent code code_block"><code>https://vk.com/rtrg?p=VK-RTRG-96471-nQaGP&audience=8839163</code></pre>
+        <p class="text_subheader">Вызов пикселя с определением пользователя по device_id и добавлением в аудитории в соответствии с правилами пикселя:</p>
+        <pre class="text_indent code code_block"><code>https://vk.com/rtrg?p=VK-RTRG-96471-nQaGP&device_id=ADF5EE9D-9DA4-4378-83D7-3192B18B9922</code></pre>
+    </section>
+
+
+    <hr>
+    <small>2017, Команда ВКонтакте</small>
+</div>
+
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
