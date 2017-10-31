@@ -352,12 +352,14 @@ p {
     width: 300px;
     border: 1px solid #aaa;
 }
-
+.form[disabled] .input,
+.form[disabled] .button,
 .input[disabled],
 .button[disabled]
 {
     background-color: #fafafa;
     color: #aaa;
+    pointer-events:none;
 }
 
 .label {

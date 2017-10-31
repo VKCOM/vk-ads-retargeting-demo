@@ -24,17 +24,39 @@
             </p>
 
             <section class="section">
-                <h3 class="section__header"><span class="section__header-index">1. </span>Подключите <code class="code code_inline">openapi.js</code></h3>
-                <pre><code class="code code_block">&lt;script src="//vk.com/js/api/openapi.js?150">&lt;/script></code></pre>
+                <h3 class="section__header"><span class="section__header-index">1. </span>Подключите <code class="code code_inline">openapi.js</code> и инициализируйте пиксель</h3>
+                <p class="text_subheader">&mdash; Асинхронное подключение</p>
+                <pre class="text_indent"><code class="code code_block">&lt;script>
+  // вызовется после загрузки openapi.js
+  window.vkAsyncInit = function() {
+    VK.Retargeting.Init('VK-RTRG-96471-KZ24cpR');
+  }
+&lt;/script>
+&lt;script src="//vk.com/js/api/openapi.js?150" async>&lt;/script></code></pre>
+                <p class="text_subheader">&mdash; Асинхронное подключение (подходит для Google Tag Manager)</p>
+                <pre class="text_indent"><code class="code code_block">&lt;div id="vk_api_transport">&lt;/div>
+&lt;script>
+  window.vkAsyncInit = function() {
+    VK.Retargeting.Init('VK-RTRG-162959-e0J6d');
+  };
+
+  setTimeout(function() {
+    var el = document.createElement("script");
+    el.type = "text/javascript";
+    el.src = "https://vk.com/js/api/openapi.js?150";
+    el.async = true;
+    document.getElementById("vk_api_transport").appendChild(el);
+  }, 0);
+&lt;/script></code></pre>
+
+            <p class="text_subheader">&mdash; Синхронное подключение (не рекомендуется)</p>
+            <pre class="text_indent"><code class="code code_block">&lt;script src="//vk.com/js/api/openapi.js?150">&lt;/script>
+&lt;script>VK.Retargeting.Init('VK-RTRG-96471-KZ24cpR');&lt;/script></code></pre>
+
             </section>
 
             <section class="section">
-                <h3 class="section__header"><span class="section__header-index">2. </span>Инициализируйте код пикселя</h3>
-                <pre><code class="code code_block">VK.Retargeting.Init('VK-RTRG-96471-KZ24cpR');</code></pre>
-            </section>
-
-            <section class="section">
-                <h3 class="section__header"><span class="section__header-index">3. </span>Используйте методы JS API</h3>
+                <h3 class="section__header"><span class="section__header-index">2. </span>Используйте методы JS API</h3>
                 <p>Вызывайте методы в момент совершения пользователем интересного вам действия. Самый простой пример &mdash; добавить код в атрибут <code class="code code_inline">onclick</code> кнопки:</p>
                 <pre class="code code_block"><code>&lt;button onclick="VK.Retargeting.Event('click-save-button')">
     Сохранить

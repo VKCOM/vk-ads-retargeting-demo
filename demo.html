@@ -29,17 +29,18 @@
             <p>При загрузке страницы вызывается метод <code class="code code_inline">Hit</code>. При изменении любого из полей формы &mdash; <code class="code code_inline">Add</code>. При нажатии на кнопку &mdash; <code class="code code_inline">Event</code>.</p>
 
             <hr>
+            <div class="loading">Загрузка&hellip;<hr></div>
 
-            <div class="form">
+            <div class="form" disabled>
                 <label class="label">
                     Имя:<br>
-                    <input class="input" type="text">
+                    <input class="input" type="text" disabled>
                 </label>
                 <label class="label">
                     Фамилия:<br>
-                    <input class="input" type="text">
+                    <input class="input" type="text" disabled>
                 </label>
-                <button class="button">Сохранить</button>
+                <button class="button" disabled>Сохранить</button>
             </div>
 
             <hr>
@@ -53,7 +54,8 @@
 
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
-        <script src="https://vk.com/js/api/openapi.js?150"></script>
         <script src="js/demo.js"></script>
+
+        <script src="https://vk.com/js/api/openapi.js?150" async></script>
     </body>
 </html>
