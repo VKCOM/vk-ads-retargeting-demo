@@ -27,44 +27,49 @@
                 <h3 class="section__header"><span class="section__header-index">1. </span>Подключите <code class="code code_inline">openapi.js</code> и инициализируйте пиксель</h3>
                 <p class="text_subheader">&mdash; Асинхронное подключение</p>
                 <pre class="text_indent"><code class="code code_block">&lt;script>
+  // переменная для хранения экземпляра пикселя
+  var pixel;
+
   // вызовется после загрузки openapi.js
   window.vkAsyncInit = function() {
-    VK.Retargeting.Init('VK-RTRG-96471-KZ24cpR');
+    pixel = new VK.Pixel('VK-RTRG-96471-KZ24cpR');
   }
 &lt;/script>
-&lt;script src="//vk.com/js/api/openapi.js?150" async>&lt;/script></code></pre>
+&lt;script src="//vk.com/js/api/openapi.js?159" async>&lt;/script></code></pre>
                 <p class="text_subheader">&mdash; Асинхронное подключение (подходит для Google Tag Manager)</p>
                 <pre class="text_indent"><code class="code code_block">&lt;div id="vk_api_transport">&lt;/div>
 &lt;script>
+  var pixel;
+
   window.vkAsyncInit = function() {
-    VK.Retargeting.Init('VK-RTRG-162959-e0J6d');
+    pixel = new VK.Pixel('VK-RTRG-162959-e0J6d');
   };
 
   setTimeout(function() {
     var el = document.createElement("script");
     el.type = "text/javascript";
-    el.src = "https://vk.com/js/api/openapi.js?150";
+    el.src = "https://vk.com/js/api/openapi.js?159";
     el.async = true;
     document.getElementById("vk_api_transport").appendChild(el);
   }, 0);
 &lt;/script></code></pre>
 
             <p class="text_subheader">&mdash; Синхронное подключение (не рекомендуется)</p>
-            <pre class="text_indent"><code class="code code_block">&lt;script src="//vk.com/js/api/openapi.js?150">&lt;/script>
-&lt;script>VK.Retargeting.Init('VK-RTRG-96471-KZ24cpR');&lt;/script></code></pre>
+            <pre class="text_indent"><code class="code code_block">&lt;script src="//vk.com/js/api/openapi.js?159">&lt;/script>
+&lt;script>var pixel = new VK.Pixel('VK-RTRG-96471-KZ24cpR');&lt;/script></code></pre>
 
             </section>
 
             <section class="section">
                 <h3 class="section__header"><span class="section__header-index">2. </span>Используйте методы JS API</h3>
                 <p>Вызывайте методы в момент совершения пользователем интересного вам действия. Самый простой пример &mdash; добавить код в атрибут <code class="code code_inline">onclick</code> кнопки:</p>
-                <pre class="code code_block"><code>&lt;button onclick="VK.Retargeting.Event('click-save-button')">
+                <pre class="code code_block"><code>&lt;button onclick="pixel.Event('click-save-button')">
     Сохранить
 &lt;/button></code></pre>
 
                 <p>Доступно три метода: посещение страницы (совпадает с тем, как работал пиксель до появления событий и JS API), генерация события и добавление в аудиторию. Подробнее о них:</p>
                 <p class="text_subheader">
-                    <code class="code code_inline">VK.Retargeting.Hit()</code>
+                    <code class="code code_inline">pixel.Hit()</code>
                 </p>
                 <p class="text_indent">
                     Генерация простого события посещения страницы. В зависимости от адреса страницы, на которой пользователь вашего сайта сейчас находится, он будет добавлен в аудитории, для которых сработают настроенные для них правила.
@@ -74,7 +79,7 @@
                 </p>
 
                 <p class="text_subheader">
-                    <code class="code code_inline">VK.Retargeting.Event(eventName)</code>
+                    <code class="code code_inline">pixel.Event(eventName)</code>
                 </p>
                 <p class="text_indent">
                     Генерация события. Пользователь будет добавлен в аудитории, для которых сработают настроенные для них правила.
@@ -86,13 +91,13 @@
 $('form').on('change', function () {
     if (!formFillStarted) {
         formFillStarted = true;
-        VK.Retargeting.Event('form-fill-started');
+        pixel.Event('form-fill-started');
     }
 });</code></pre>
 
 
                 <p class="text_subheader">
-                    <code class="code code_inline">VK.Retargeting.Add(audienceID)</code>
+                    <code class="code code_inline">pixel.Add(audienceID)</code>
                 </p>
                 <p class="text_indent">
                     Безусловное добавление пользователя в указанную аудиторию. Аудитория должна принадлежать тому же рекламному кабинету ВКонтакте, что и используемый пиксель.
@@ -101,7 +106,7 @@ $('form').on('change', function () {
                     <strong>Например:</strong> требуется собрать всех пользователей, добавивших товар в корзину, в соответствующую аудиторию.
                 </p>
                 <pre class="text_indent code code_block"><code>$('.add-to-basket').on('click', function () {
-    VK.Retargeting.Add(8839163);
+    pixel.Add(8839163);
 });</code></pre>
             </section>
 

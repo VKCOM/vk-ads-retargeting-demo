@@ -1,6 +1,10 @@
 logEvent('Страница загружена');
 
 /**
+ * Переменная для хранения экземпляра пикселя.
+ */
+var pixel;
+/**
  * Коллбек, который вызовет vk js api после своей загрузки.
  */
 window.vkAsyncInit = function() {
@@ -8,13 +12,13 @@ window.vkAsyncInit = function() {
   /**
    * Инициализация пикселя ВКонтакте
    */
-  VK.Retargeting.Init('VK-RTRG-96471-nQaGP');
+  pixel = new VK.Pixel('VK-RTRG-96471-nQaGP');
 
   /**
    * Генерация простого события посещения текущей страницы. Если найдутся аудитории с подходящими правилами,
    * то пользователь будет в них добавлен.
    */
-  VK.Retargeting.Hit();
+  pixel.Hit();
   logEvent('Сгенерировано простое событие посещения страницы');
 
   $('.form, .form .input, .form .button').removeAttr('disabled');
@@ -27,7 +31,7 @@ window.vkAsyncInit = function() {
  * Также можно использовать атрибут onclick тега button в html-разметке.
  *
  * Например:
- * <button onclick="VK.Retargeting.Event('click-save-button')">Сохранить</button>
+ * <button onclick="pixel.Event('click-save-button')">Сохранить</button>
  */
 $('.button').click(function () {
     /**
@@ -44,7 +48,7 @@ $('.button').click(function () {
      * Генерируем событие нажатия на кнопку. Если найдутся аудитории с подхяодщими правилами,
      * то пользователь будет в них добавлен.
      */
-    VK.Retargeting.Event('click-save-button');
+    pixel.Event('click-save-button');
     logEvent('Сгенерировано событие нажатия на кнопку');
 });
 
@@ -64,7 +68,7 @@ $('.input').change(function () {
         /**
          * Добавляем пользователя в конкретную аудиторию по её ID. Например, "Начавшие заполнять форму".
          */
-        VK.Retargeting.Add(22936871);
+        pixel.Add(22936871);
         logEvent('Отправлен запрос на добавление пользователя в аудиторию 22936871');
 
         /**
